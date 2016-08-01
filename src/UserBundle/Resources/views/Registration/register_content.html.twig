@@ -69,11 +69,29 @@
                         {{ form_errors(form.github) }}
                     </div>
                 </div>
+{#
                 <div class="row">
                     <div class="input-field col s12">
+                        {{ dump(form.plainPassword.first) }}
+                        {{ dump(form.plainPassword.second) }}
                         {{ form_label(form.plainPassword) }}
                         {{ form_widget(form.plainPassword) }}
                         {{ form_errors(form.plainPassword) }}
+                    </div>
+                </div>
+#}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second) }}
+                        {{ form_errors(form.plainPassword.second) }}
                     </div>
                 </div>
             </div>

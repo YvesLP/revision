@@ -1,0 +1,12 @@
+<?php
+
+namespace ShareBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Document
+ */
+class Document
+{
+}

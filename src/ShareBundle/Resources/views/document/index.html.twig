@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Document list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Doctitre</th>
+                <th>Docdesc</th>
+                <th>Docfichier</th>
+                <th>Docpub</th>
+                <th>Docmaj</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+            <tr>
+                <td><a href="{{ path('document_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+                <td>{{ document.docTitre }}</td>
+                <td>{{ document.docDesc }}</td>
+                <td>{{ document.docFichier }}</td>
+                <td>{% if document.docPub %}{{ document.docPub|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if document.docMaj %}{{ document.docMaj|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('document_show', { 'id': document.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('document_edit', { 'id': document.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('document_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

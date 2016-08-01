@@ -1,0 +1,38 @@
+ShareBundle\Entity\Document:
+    type: entity
+    table: null
+    repositoryClass: ShareBundle\Repository\DocumentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        docTitre:
+            type: string
+            length: 255
+            column: doc_titre
+        docDesc:
+            type: string
+            length: 255
+            column: doc_desc
+        docFichier:
+            type: string
+            length: 255
+            column: doc_fichier
+        docPub:
+            type: date
+            nullable: true
+            column: doc_pub
+        docMaj:
+            type: datetime
+            nullable: true
+            column: doc_maj
+    manyToOne:
+        docIdUser:
+            targetEntity: UserBundle\Entity\User
+            joinColumn:
+                name: doc_iduser
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
