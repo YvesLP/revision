@@ -53,7 +53,7 @@ class DocumentController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $user = $this->get('security.token_storage')->getToken()->getUser();
-            var_dump($user);
+            //var_dump($user);
 //            if ($user)
                 $document->setDocIdUser($user);
 //            else
@@ -100,6 +100,14 @@ class DocumentController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            // Si nouveau fichier sélectionné dans notre formulaire
+
+            if($editForm->get('monFichier')->getData() != null) {
+                $document->removeUpload();
+                $document->preUpload();
+             }
+
             $em->persist($document);
             $em->flush();
 

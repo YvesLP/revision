@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DocumentType extends AbstractType
+class LanguageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,7 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('docTitre')
-            ->add('docDesc')
-            //->add('docFichier')
-            ->add('monFichier', 'file', array('label' => 'Document associé', 'required' => false))
-//            ->add('docPub', 'date')
-//            ->add('docMaj', 'datetime')
-//            ->add('docIdUser')
+            ->add('lngDev')
         ;
     }
     
@@ -31,7 +25,7 @@ class DocumentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ShareBundle\Entity\Document'
+            'data_class' => 'ShareBundle\Entity\Language'
         ));
     }
 }

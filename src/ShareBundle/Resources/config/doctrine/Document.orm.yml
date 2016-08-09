@@ -20,6 +20,7 @@ ShareBundle\Entity\Document:
         docFichier:
             type: string
             length: 255
+            nullable: true
             column: doc_fichier
         docPub:
             type: date
@@ -35,4 +36,10 @@ ShareBundle\Entity\Document:
             joinColumn:
                 name: doc_iduser
                 referencedColumnName: id
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]
+

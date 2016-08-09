@@ -9,6 +9,65 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Document
 {
+
+    public $monFichier;
+    
+    protected function getUploadDir()
+    {
+        return 'uploads';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    public function getWebPath()
+    {
+        return null === $this->docFichier ? null : $this->getUploadDir().'/'.$this->docFichier;
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->docFichier ? null : $this->getUploadRootDir().'/'.$this->docFichier;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preUpload()
+    {
+        if (null !== $this->monFichier) {
+            // do whatever you want to generate a unique name
+            $this->docFichier = uniqid().'.'.$this->monFichier->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist
+     * @ORM\PostUpdate
+     */
+    public function upload()
+    {
+        if (null === $this->monFichier) {
+            return;
+        }
+        $this->monFichier->move($this->getUploadRootDir(), $this->docFichier);
+
+        unset($this->monFichier);
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($monFichier = $this->getAbsolutePath()) {
+            unlink($monFichier);
+        }
+    }
+
+    //
+    // GENERATED CODE
+    //
     /**
      * @var integer
      */
