@@ -1,7 +1,32 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ShareBundle:Language:new{% endblock %}
+{% block title %}Nouveau language{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Language:new page</h1>
+<h1>Ajout d'un Language</h1>
+
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col m8 offset-m2">
+            {{ form_label(form.lngDev) }}
+            {{ form_errors(form.lngDev) }}
+            {{ form_widget(form.lngDev) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m8 offset-m2">
+            {{ form_label(form.users) }}
+            {{ form_errors(form.users) }}
+            {{ form_widget(form.users) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m8 offset-m2">
+            <input type="submit" value="Créer" />
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
 {% endblock %}

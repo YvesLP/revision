@@ -43,3 +43,14 @@ UserBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+    manyToMany:
+        languages:
+            targetEntity: ShareBundle\Entity\Language
+            inversedBy: users
+            joinTable:
+                name: languages
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    language_id:

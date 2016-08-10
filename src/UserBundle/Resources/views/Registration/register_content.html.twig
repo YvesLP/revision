@@ -51,12 +51,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s4">
                         {{ form_label(form.code_postal) }}
                         {{ form_widget(form.code_postal) }}
                         {{ form_errors(form.code_postal) }}
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s8">
                         {{ form_label(form.ville) }}
                         {{ form_widget(form.ville) }}
                         {{ form_errors(form.ville) }}
@@ -92,6 +92,13 @@
                         {{ form_label(form.plainPassword.second) }}
                         {{ form_widget(form.plainPassword.second) }}
                         {{ form_errors(form.plainPassword.second) }}
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form_label(form.languages) }}
+                    <div class="input-field col s12">
+                        {{ form_widget(form.languages) }}
+                        {{ form_errors(form.languages) }}
                     </div>
                 </div>
             </div>

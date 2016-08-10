@@ -1,7 +1,32 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ShareBundle:Language:edit{% endblock %}
+{% block title %}Modification Language{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Language:edit page</h1>
+    <h1>Modification d'un Language</h1>
+
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col m8 offset-m2">
+            {{ form_label(form.lngDev) }}
+            {{ form_errors(form.lngDev) }}
+            {{ form_widget(form.lngDev) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m8 offset-m2">
+            {{ form_label(form.users) }}
+            {{ form_errors(form.users) }}
+            {{ form_widget(form.users) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m8 offset-m2">
+            <input type="submit" value="Valider" />
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
 {% endblock %}

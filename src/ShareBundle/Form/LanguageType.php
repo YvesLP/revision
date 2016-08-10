@@ -16,6 +16,7 @@ class LanguageType extends AbstractType
     {
         $builder
             ->add('lngDev')
+            ->add('users')
         ;
     }
     

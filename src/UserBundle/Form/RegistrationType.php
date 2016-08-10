@@ -42,6 +42,7 @@ class RegistrationType extends AbstractType
             ->add('github', 'text', array(
                 'required' => false
             ))
+            ->add('languages')
         ;
     }
 

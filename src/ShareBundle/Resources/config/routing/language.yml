@@ -1,6 +1,6 @@
 
 language_index:
-    path:     /index
+    path:     /
     defaults: { _controller: ShareBundle:Language:index }
     methods:  GET
 
@@ -17,4 +17,4 @@ language_edit:
 language_delete:
     path:     /{id}/delete
     defaults: { _controller: ShareBundle:Language:delete }
-    methods:  DELETE
+    methods:  [GET, DELETE]
